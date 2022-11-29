@@ -7,10 +7,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-   <link rel="stylesheet" href="public/scss/header.css">
-    <link rel="stylesheet" href="public/scss/main.css">
+
+    <link rel="stylesheet" href="./public/scss/main.css">
     <script src="https://kit.fontawesome.com/b14771b76e.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="public/img/logo.ico">
+    <link rel="icon" type="image/png" href="public/img/favicon.ico">
 
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
