@@ -1,8 +1,9 @@
 <?php
-require_once('./src/model/front/home.php');
+require_once './src/model/front/home.php';
 
-function home(){
-  //  $posts = getLastCars();
+function home()
+{
+    //  $posts = getLastCars();
 
-    require('./src/view/front/home.php');
+    require './src/view/front/home.php';
 }

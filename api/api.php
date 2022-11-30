@@ -1,11 +1,16 @@
 <?php
- session_start();
+session_start();
 //local
-$pdo = new PDO('mysql:dbname=frankobizness;host=localhost', 'root', '');
-function getConnexion(){
-    return new PDO("mysql:host=localhost; dbname=frankobizness; charset=UTF8", "root", "");
-}
+$pdo = new PDO('mysql:dbname=rapidnote;host=localhost', 'root', '');
 
+function getConnexion()
+{
+    return new PDO(
+        'mysql:host=localhost; dbname=rapidnote; charset=UTF8',
+        'root',
+        ''
+    );
+}
 
 //production
 /*
@@ -15,39 +20,41 @@ function getConnexion(){
 
 $pdo = new PDO('mysql:dbname=adra7128_sezam;host=localhost', 'adra7128_adra7128', 'g@RT@iOQ0Amn');
 */
-$error = array('error' => false);
+$error = ['error' => false];
 $action = '';
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
 
+function str_random($length)
+{
+    $alphabet =
+        '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
 
+    return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
+}
 
+// obtenir le titre de la page
+function PageName()
+{
+    return substr(
+        $_SERVER['SCRIPT_NAME'],
+        strrpos($_SERVER['SCRIPT_NAME'], '/') + 1
+    );
+}
 
-function str_random($length){
-        $alphabet="0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+$current_page = PageName();
 
-        return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
-    }
+//controle des input
+function verifyInput($inputContent)
+{
+    $inputContent = htmlspecialchars($inputContent);
 
-    // obtenir le titre de la page
-    function PageName() {
-        return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
-      }
+    $inputContent = trim($inputContent);
 
-      $current_page = PageName();
-
-    //controle des input
-    function verifyInput($inputContent){
-        $inputContent = htmlspecialchars(
-            $inputContent
-        );
-
-        $inputContent = trim($inputContent);
-
-        return $inputContent;
-    }
+    return $inputContent;
+}
 /*
     function getAllCars(){
         $pdo = getConnexion();
@@ -60,7 +67,6 @@ function str_random($length){
         return $datas;
     }
 */
-
 
 /*
 function newCar(){
@@ -103,12 +109,12 @@ function newCar(){
 
 
             if(!empty($errors)){ ?>
-                      <ul>
-            <?php foreach ($errors as $error): ?>
-            <li style="color: red"><?= $error; ?></li>
-            <?php endforeach;?>
-        </ul>
-            <?php }
+<ul>
+    <?php foreach ($errors as $error): ?>
+    <li style="color: red"><?= $error; ?></li>
+    <?php endforeach;?>
+</ul>
+<?php }
 
 
             if(empty($errors)){
@@ -172,88 +178,88 @@ function newCar(){
                    $req -> execute([$pic4, $car_id]);
                 }
                ?>
-                    <script>
-                        alert('Nouveau vehicule ajouté avec succes');
-                        window.location.replace('./index.php?action=dashboard');
-                    </script>
-               <?php
+<script>
+alert('Nouveau vehicule ajouté avec succes');
+window.location.replace('./index.php?action=dashboard');
+</script>
+<?php
     }
     }
 }
 */
 
-/*
-function login(){
-    if(!empty($_POST)){
+function login()
+{
+    if (!empty($_POST)) {
         $pdo = getConnexion();
 
-        $errors = array ();
+        $errors = [];
 
-        if(isset($_POST['username'], $_POST['pass'])
-            &&!empty($_POST['username'] && !empty($_POST['pass']))
-            ){
+        if (
+            isset($_POST['username'], $_POST['pass']) &&
+            !empty($_POST['username'] && !empty($_POST['pass']))
+        ) {
+            $sql = 'SELECT * FROM `users` WHERE `username` = ?';
 
-            $sql = "SELECT * FROM `users` WHERE `username` = ?";
-
-            $query = $pdo -> prepare($sql);
+            $query = $pdo->prepare($sql);
 
             $query->execute([verifyInput($_POST['username'])]);
 
             $user = $query->fetch();
 
-            if(!$user){
+            if (!$user) {
                 $errors['username'] = 'Utilisateur/mot de passe incorrect';
             }
 
-            if(!password_verify($_POST['pass'], $user['pass'])){
+            if (!password_verify($_POST['pass'], $user['pass'])) {
                 $errors['pass'] = 'Utilisateur/mot de passe incorrect';
             }
 
-            if(!empty($errors)){
-             $_SESSION['login'] = [
-                    "username" =>verifyInput($_POST['username']),
-                    "pass" => verifyInput($_POST['pass'])
-                    ];
-                    ?>
+            if (!empty($errors)) {
+                $_SESSION['login'] = [
+                    'username' => verifyInput($_POST['username']),
+                    'pass' => verifyInput($_POST['pass']),
+                ]; ?>
 
-               <script>
-                    alert('Veuillez verifier vos identifiants');
-                  window.location.replace('../index.php?action=loginPage')
-               </script>
-            <?php }
+<script>
+alert('Please check your login details');
+window.location.replace('../index.php?action=loginPage')
+</script>
+<?php
+            }
 
-            if (empty($errors)){
+            if (empty($errors)) {
                 $_SESSION['user'] = [
-                    "username" =>$user['username'],
-                    "role" => $user['admin']
+                    'username' => $user['username'],
+                    'role' => $user['admin'],
+                    'first_name' => $user['first_name'],
+                    'last_name' => $user['last_name'],
+                    'id' => $user['id'],
                 ];
-                header("Location: ../index.php?action=dashboard");
+                header('Location: ../index.php?action=dashboard');
             }
-
-            }
+        }
     }
 }
 
-function logout(){
+function logout()
+{
     unset($_SESSION['user']);
 
-    header("Location: ../index.php");
+    header('Location: ../index.php');
 }
 
-*/
-
-/*
-if($action == 'login'){
+if ($action == 'login') {
     login();
 }
 
-if($action == 'logout'){
+if ($action == 'logout') {
     logout();
 }
-*/
-    function sendJSON($infos)
-    {
-        header("Access-Control-Allow-Origin: *");
-        header("Content-Type: application/json");
-        echo json_encode($infos, JSON_UNESCAPED_UNICODE);
-    }
+
+function sendJSON($infos)
+{
+    header('Access-Control-Allow-Origin: *');
+    header('Content-Type: application/json');
+    echo json_encode($infos, JSON_UNESCAPED_UNICODE);
+}

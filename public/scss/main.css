@@ -83,6 +83,11 @@ li {
   list-style: none;
 }
 
+.btn-primary {
+  margin: 5px;
+  width: auto;
+}
+
 a {
   text-decoration: none;
 }
@@ -461,10 +466,12 @@ nav ul li a {
 .dashboard .menu li button {
   background-color: #4884B7;
   color: white;
-  border: 1px #4884B7 solid;
-  font-weight: bold;
-  border-radius: 10px;
-  border: none;
+  border: 1px solid;
+  border-radius: 5px;
+  height: 35px;
+  width: auto;
+  cursor: pointer;
+  transition: 500ms ease-in-out;
 }
 .dashboard .menu li .link:hover {
   background-color: #1a5486;
@@ -604,7 +611,7 @@ nav ul li a {
   background-color: #4884B7;
   color: white;
   border: 1px solid;
-  border-radius: 30px;
+  border-radius: 5px;
   height: 35px;
   width: auto;
   cursor: pointer;

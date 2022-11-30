@@ -111,7 +111,7 @@ $black: #202022;
     border: 1px solid;
     border-radius: 5px;
     height: 35px;
-    width: auto;    
+    width: auto;
     cursor: pointer;
     transition: 500ms ease-in-out;
 }
@@ -135,6 +135,11 @@ $black: #202022;
 
 li{
     list-style: none;
+}
+
+.btn-primary{
+    margin: 5px;
+    width: auto;
 }
 
 a{
