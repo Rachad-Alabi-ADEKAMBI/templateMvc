@@ -5,6 +5,7 @@ require_once 'src/controllers/front/home.php';
 require_once 'src/controllers/front/login.php';
 require_once 'src/controllers/back/dashboard.php';
 require_once 'src/controllers/back/buy.php';
+require_once 'src/controllers/front/register.php';
 
 if (isset($_GET['action']) && $_GET['action'] !== '') {
     if ($_GET['action'] === 'loginPage') {
@@ -29,6 +30,8 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         home();
     } elseif ($_GET['action'] === 'contact') {
         // contact();
+    } elseif ($_GET['action'] === 'register') {
+        register();
     } else {
         echo 'Error 404 : Page not found.';
     }

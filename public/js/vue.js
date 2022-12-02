@@ -4,23 +4,23 @@ const { createApp } = Vue
 createApp({
   data() {
     return {
-        cars: []
-
+        rates: [],
+        rate: 0,
+        neededAmount: 0,
+        amountToPay: 0
     }
 },
 mounted: function() {
-  // this.getCars();
+   this.getRates();
 },
 methods: {
-    getCars() {
-       axios.get('http://127.0.0.1/frankobizness/api/cars').then(response =>
-            this.cars = response.data);
-
-        this.showBtn = true;
-        this.showCars = true;
+    getRates() {
+       axios.get('http://127.0.0.1/rn/api/rates').then(response =>
+            this.rates = response.data);
     },
-    getCar($id){
-        window.location.replace('././index.php?action=car&id='+$id)
+    getBuyingRate($id){
+        axios.get('http://127.0.0.1/rn/api/buyingRate/' +$id).then(response =>
+        this.rate = response.data);
     },
 
     format(num){

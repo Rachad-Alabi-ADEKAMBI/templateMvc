@@ -5,7 +5,7 @@ $blue-dark: #1a5486;
 $bg: #F3F3F5;
 $white: white;
 $grey: rgb(34, 26, 26);
-$grey-light: #40312C;
+$grey-light: #535353;
 $black: #202022;
 
 @keyframes greeen {
@@ -171,510 +171,61 @@ html, body{
     line-height: 1.5em;
     font-size: 1.1em;
     font-family: 'Montserrat', sans-serif;
-    background-color: $bg;
-}
-
-.main{
-    display: block;
-    width: 100%;
 }
 
 .form{
-    margin: 0px auto 40px auto;
-    width: 550px;
-    height: auto;
-    text-align: left;
-    padding-left: 10px;
-    border-radius: 15px;
-    background-color: rgb(207, 205, 201);
-    @include flex(column);
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 10px 12px #00000029;
+    padding: 5px;
 
-
-    h1{
-        @include title();
-    }
-
-    span{
+    h2{
         color: $blue;
-        font-size: 2em;
-        font-weight: bold;
-
-        .gh{
-            font-size: 1em;
-            font-weight: 400;
-        }
     }
 
-    .details{
-        @include flex(row);
-        width: 80%;
-        margin: auto;
-
-        label{
-            flex: 1;
-            @include flex;
-            justify-content: start;
-
-            .sm{
-                width: 15px;
-                height: 15px;
-                margin: 5px 5px auto 0;
-            }
-
-            img{
-                width: 25px;
-                height: 25px;
-            }
-
-            p{
-                font-size: 1em;
-                font-weight: 400;
-
-            }
-        }
-
-
-    }
-
-    &__details{
-        @include flex(row);
-        justify-content: space-between;
-        width: 100%;
-        flex-direction: row;
-
-        label{
-            flex: 1;
-            margin: auto 0;
-
-            input{
-                @include input();
-            }
-        }
-
-    }
-
-    label{
-        margin: 10px auto auto 0;
-        width: 250px;
-        text-align: left;
-
-        input{
-            @include input();
-            position: relative;
-        }
-
-        .blue{
-            color: $blue;
-            font-weight: bold;
-            padding-left: 20px;
-        }
-
-        .black{
-            color: $grey;
-            font-weight: 600;
-        }
-
-        .currency{
-            position: absolute;
-            margin: -30px  auto auto 60px;
-            color: $blue;
-            font-weight: bold;
-        }
-
-        .flag{
-            position: absolute;
-            margin: 2px 50px auto -40px;
-            color: $blue;
-            font-weight: bold;
-            height: 30px;
-            width: 30px;
-        }
-    }
-
-    &__close,
-    .form__close{
-        float: right;
-        height: 40px;
-        margin: 10px 0 10px auto;
-        i{
-            margin: auto 10px auto auto;
-        }
-    }
-
-    .items{
-        @include flex();
-        width: 70%;
-        margin: 20px auto;
-    }
-
-    &__items{
-        @include flex();
-        margin: 50px auto;
-
-        &__item{
-            margin: auto;
-            width: 120px;
-            height: 120px;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            transition: 500ms ease-in-out;
-
-            img{
-                width: 70px;
-                height: 70px;
-            }
-
-            p{
-                text-align: center;
-                font-size: 0.9em;
-            }
-        }
-
-    &__item:hover{
-        transform: scale(1.1);
-    }
-    }
-
-    .link{
-        margin: 20px auto;
-        width: 150px;
+    img{
+        width: 40px;
+        height: 30px;
     }
 }
 
-.container{
-    width: 100%;
-}
-
-button a{
-    color: $white;
-    font-weight: bold;
-}
-
-nav{
-    height: 80px;
-    width: 100%;
-    position: fixed;
-    background: rgb(4, 5, 53);
-    z-index: 99999;
-  }
-
-  label.logo{
-    color: white;
-    font-size: 35px;
-    line-height: 80px;
-    padding: 0 50px;
-    font-weight: bold;
-  }
-
-  label.logo img{
-      margin: 10px auto;
-      height: 50px;
-      width: 170px;
-  }
-  nav ul{
-    float: right;
-    margin-right: 20px;
-  }
-
-  nav ul li{
-    display: inline-block;
-    line-height: 80px;
-    margin: 0 5px;
-  }
-
-nav ul li a{
-    color: $white;
-}
-
-  .nav-link, .login-link{
-    border-radius: 3px;
-    height: 40px;
-    color: white;
-    font-weight: bold;
-  }
-
-  .login-link:hover{
-    font-weight: bold;
-    font-size: 1em;
-  }
-
-  .checkbtn{
-    font-size: 30px;
-    color: white;
-    float: right;
-    line-height: 80px;
-    margin-right: 40px;
-    cursor: pointer;
-    display: none;
-  }
-  #check{
-    display: none;
-  }
-  @media (max-width: 952px){
-    label.logo{
-      font-size: 30px;
-      padding-left: 50px;
-    }
-    nav ul li a{
-      font-size: 16px;
-    }
-  }
-
-  @media (max-width: 1279px){
-    .checkbtn{
-      display: block;
-    }
-
-    .checkbtn i{
-      color: white;
-    }
-
-    nav{
-        position: fixed;
-        z-index: 9999;
-        background-color:  $grey-light;
-    }
-
-    nav label img{
-      top: 5px;
-      left: 5px;
-      position: absolute;
-    }
-
-    ul{
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      background: white;
-      top: 80px;
-      padding-top: 80px;
-      left: -100%;
-      text-align: center;
-      transition: all .5s;
-    }
-    nav ul li{
-      display: block;
-      margin: 10px 0;
-      line-height: 30px;
-    }
-    nav ul li a{
-      font-size: 20px;
-    }
-    a:hover,a.active{
-      background: none;
-      color:  #D1AF52;
-    }
-    #check:checked ~ ul{
-      left: 0;
-    }
-  }
 
 .dashboard{
-    width: 95%;
-    display: flex;
-    margin: auto auto 70px auto;
-    padding-top: 110px;
 
-    .menu{
-        width: 20%;
+    &__menu{
+        background-color: $grey-light;
         height: 80vh;
-        background-color: $black;
-        border-radius: 10px;
-        border: 1px $black solid;
-        display: block;
-        text-align: center;
-        overflow: hidden;
 
-        padding-top: 0;
-       li{
-        margin: 0px auto 10px auto;
-        background-color: $blue;
+        ul{
+            li{
+                margin: 15px auto;
+                text-align: center;
 
-            .link{
-                width: 100%;
-                background: $blue;
-                border-radius: 10px;
-                border: none;
-                a{
-                    color: $white;
-                    font-weight: bold;
+                .btn{
+                    background-color: $grey-light;
+                    border: none;
+                    width: 200px;
+                    margin: auto;
+                    text-align: left;
+
+                    a{
+                        color: $white;
+                        text-align: left;
+
+                        i{
+                            margin-right: 10px;
+                        }
+                    }
                 }
 
+                .btn:hover{
+                    background-color: $blue;
+                }
             }
-
-
-            button{
-               @include button();
-            }
-
-            .link:hover{
-                background-color: $blue-dark;
-            }
-
-            button:hover{
-                background-color: $blue-dark;
-            }
-
-
-       }
-
-
+        }
     }
 
-    .content{
-        @include flex(column);
-        width: 90%;
-        border-radius: 10px;
-        margin: auto;
-        margin-left: 20px;
-        padding-bottom: 50px;
-        background-color:$blue;
-
-        &__title{
-            margin: 20px auto auto 10px;
-            @include subtitle();
-        }
-
-        &__infos{
-            @include flex();
-            text-align: right;
-            float: right;
-            height: 50px;
-            margin: auto 0;
-
-           .icons{
-            margin: auto 0 auto auto;
-           float: right;
-            display: flex;
-            justify-content: space-between;
-            flex-direction: row;
-            color: $white;
-            font-weight: bold;
-            text-decoration: underline;
-            .icon{
-                margin: 10px;
-                text-align: right;
-                cursor: pointer;
-                transition: 500ms ease-in-out;
-            }
-
-            .icon:hover{
-                transform: scaleX(1);
-            }
-           }
-
-        }
-
-        &__boxes{
-            margin: 5px auto auto 0;
-            @include flex();
-            cursor: pointer;
-            text-align: left;
-            width: 100%;
-
-            .box{
-                width: 150px;
-                margin: 15px;
-                border-radius: 10px;
-                position: relative;
-                flex: 1;
-                margin: 15px;
-                background-color: whitesmoke;
-                display: block;
-                padding: 10px;
-
-                .fa-wallet{
-                    font-size: 1.4em;
-                    margin: auto 40px auto 40px;
-                    text-align: center;
-                    color: $blue;
-                    margin: auto;
-                }
-
-                .devise{
-                    margin: auto;
-                    text-align: center;
-                    img{
-                        width: 50px;
-                        height: 50px;
-                    }
-                }
-
-                .note{
-                    display: block;
-
-                    h3{
-                        text-decoration: underline;
-                        font-size: 1em;
-
-                    }
-
-                    i{
-                       font-size: 1.4em;
-                        margin: auto;
-                        color: $blue;
-                    }
-
-                    .wallet{
-                        margin: auto;
-                        text-align: center;
-                    }
-
-                    .important{
-                        display: table;
-                        color: $blue;
-                        position: relative;
-                        width: 100%;
-
-                        img{
-                            width: 15px;
-                            height: 15px;
-
-                        }
-
-                        strong{
-                            position: absolute;
-                            right: 0px;
-
-                        }
-                    }
-
-                    label{
-                        margin: 15px auto;
-                        input{
-                            @include input();
-                        }
-
-                        button{
-                            @include button();
-                        }
-                    }
-                }
-
-            }
-
-
-            .box-form{
-                width: 320px;
-                height: 320px;
-            }
-        }
-
-        &__graphs{
-            @include flex();
-            height: auto;
-
-            .graph{
-                width: 300px;
-                height: 300px;
-                background-color: black;
-                border-radius: 10px;
-                flex: 1;
-                margin: 10px;
-                display: block;
-            }
-        }
+    &__content{
 
     }
 }
@@ -855,61 +406,6 @@ nav ul li a{
 
 }
 
-.reasons{
-    @include flex(column);
-    background-color: rgb(55, 71, 82);
-    text-align: center;
-    width: 100%;
-    margin: auto;
-    padding-top: 20px;
-
-    &__title{
-       @include subtitle();
-       color: $white;
-    }
-
-    &__sections{
-        @include flex();
-        width: 90%;
-
-        &__box{
-            flex: 1;
-            text-align: center;
-            margin: 15px auto;
-            animation: moveB 2s ease-in-out;
-
-
-            .box-img{
-                background-color: rgb(212, 194, 212);
-                width: 50px;
-                height: 50px;
-                border-radius: 40px;
-                margin: 15px auto;
-                text-align: center;
-                position: relative;
-                display: table;
-
-                p{
-                    display: table-cell;
-                    vertical-align: middle;
-                    color: $white;
-                    color: $black;
-                }
-            }
-
-            p{
-                color: $white;
-
-                a{
-                    color: $white;
-                }
-            }
-
-
-        }
-
-    }
-}
 
 .simulator{
     @include flex(column);

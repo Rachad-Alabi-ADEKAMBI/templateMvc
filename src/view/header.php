@@ -5,7 +5,7 @@
     </label>
     <label class="logo">
         <a href="./index.php?action=home">
-            <img src="./public/img/logo.jpg" alt="">
+            <img src="./public/img/logo.png" alt="">
         </a>
     </label>
     <ul>

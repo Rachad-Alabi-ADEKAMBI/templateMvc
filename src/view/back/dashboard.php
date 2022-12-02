@@ -4,12 +4,12 @@
 
 <div class="section">
     <div class="container">
-        <div class="row">
-            <div class="col-3">
+        <div class="row dashboard">
+            <div class="col-3 dashboard__menu">
                 <?php include 'menu.php'; ?>
             </div>
 
-            <div class="col-9">
+            <div class="col-9 dashboard__content">
                 <div class="container">
                     <div class="row">
                         <?php foreach ($infos as $data) { ?>
