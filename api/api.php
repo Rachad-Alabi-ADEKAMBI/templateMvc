@@ -641,7 +641,7 @@ function login()
 
 <script>
 alert('Please check your login details');
-window.location.replace('../index.php?action=loginPage')
+window.location.replace('../index.php?action=login')
 </script>
 <?php
             }
@@ -653,7 +653,11 @@ window.location.replace('../index.php?action=loginPage')
                     'last_name' => $user['last_name'],
                     'id' => $user['id'],
                 ];
-                header('Location: ../index.php?action=dashboard');
+                if ($_SESSION['user']['role'] == 'user') {
+                    header('Location: ../index.php?action=dashboard');
+                } else {
+                    header('Location: ../index.php?action=dashboard');
+                }
             }
         }
     }

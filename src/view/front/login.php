@@ -5,8 +5,8 @@
 <div class="section">
 
     <div class="container">
-        <div class="row">
-            <div class="col-4 mx-auto mt-30 pt-10">
+        <div class="">
+            <div class="col-sm-12 col-md-4 mx-auto mt-30 pt-10 row bg-light">
                 <div class="login">
                     <form action='./api/api.php?action=login' method="POST">
                         <h1 class="text-center">

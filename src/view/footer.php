@@ -1,7 +1,76 @@
-<footer class="footer">
-    <div class="conatainer">
+<footer class="footer  bg-light">
+    <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-3">
+                <h4>
+                    Rapid note
+                </h4>
+                <p>
+                    Fast and reliable marketplace
+                </p>
+
+                <ul>
+                    <li>
+                        phone
+                    </li>
+                    <li>
+                        Contact
+                    </li>
+                    <li>
+                        Location
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+                <h4>
+                    About
+                </h4>
+
+                <ul>
+                    <li>
+                        About
+                    </li>
+                    <li>
+                        Privacy Policy
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+                <h4>
+                    Links
+                </h4>
+
+                <ul>
+                    <li>
+                        Login/Register
+                    </li>
+                    <li>
+                        Demo
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+                <h4>
+                    Newsletters
+                </h4>
+                <form action="" class="form-inline">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <label for=""></label>
+                            <input type="email">
+                        </div>
+
+                        <div class="col-3">
+                            <button>
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
 
             </div>
         </div>

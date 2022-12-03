@@ -41,6 +41,41 @@
 </section>
 <!--top ends-->
 
+<!--slider starts-->
+<!--
+<section class="section h-70">
+    <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="./public/img/ghc.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="./public/img/paypal-rond.png    " alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="./public/img/bank.jpg" alt="First slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+-->
+<!--slider ends-->
+
 <!--about starts-->
 <section class="section">
     <div class="container">
@@ -223,48 +258,57 @@
 <!--payment methods ends-->
 
 
-<div class="contact">
-    <br>
-    <h2 class="contact__title">
-        CONTACT US
-    </h2>
+<section class="section">
+    <div class="row">
 
-    <form action="api/api.php?action=contact" method="POST">
-        <div class="contact__details">
-            <label for="">
-                <input type="text" name="email" placeholder="Your first name" required>
-            </label>
+        <div class="col-sm-12 col-md-9 mx-auto">
+            <form action="api/api.php?action=contact" method="POST" class=''>
+                <h2 class="">
+                    CONTACT US
+                </h2>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="">
+                                <input type="text" name="email" placeholder="Your first name" required>
+                            </label>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="">
+                                <input type="text" name="last_name" placeholder="Your last name" required>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact__details">
+                    <label for="">
+                        <input type="text" name="email" placeholder="Your email" required>
+                    </label>
 
 
-            <label for="">
-                <input type="text" name="last_name" placeholder="Your last name" required>
-            </label>
-        </div> <br>
-
-        <div class="contact__details">
-            <label for="">
-                <input type="text" name="email" placeholder="Your email" required>
-            </label>
-
-
-            <label for="">
-                <input type="text" name="phone_number" placeholder="Your phone number" required>
-            </label>
-        </div> <br>
+                    <label for="">
+                        <input type="text" name="phone_number" placeholder="Your phone number" required>
+                    </label>
+                </div> <br>
 
 
 
 
-        <label for="">
-            <textarea type="text" name="pass" class="message" placeholder="Your message"></textarea>
-        </label> <br> <br>
+                <label for="">
+                    <textarea type="text" name="pass" class="message" placeholder="Your message"></textarea>
+                </label> <br> <br>
 
-        <button type="submit" class="button">
-            Envoyer
-        </button>
+                <button type="submit" class="btn btn-primary">
+                    Envoyer
+                </button>
 
-    </form>
-</div>
+            </form>
+        </div>
+    </div>
+</section>
 
 <?php $content = ob_get_clean(); ?>
 

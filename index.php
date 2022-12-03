@@ -6,6 +6,13 @@ require_once 'src/controllers/front/login.php';
 require_once 'src/controllers/back/dashboard.php';
 require_once 'src/controllers/back/buy.php';
 require_once 'src/controllers/front/register.php';
+require_once 'src/controllers/back/settings.php';
+require_once 'src/controllers/back/myTransactions.php';
+require_once 'src/controllers/back/sell.php';
+require_once 'src/controllers/back/wallet.php';
+require_once 'src/controllers/back/transactions.php';
+require_once 'src/controllers/back/users.php';
+require_once 'src/controllers/back/payments.php';
 
 if (isset($_GET['action']) && $_GET['action'] !== '') {
     if ($_GET['action'] === 'loginPage') {
@@ -30,8 +37,22 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         home();
     } elseif ($_GET['action'] === 'contact') {
         // contact();
+    } elseif ($_GET['action'] === 'settings') {
+        settings();
+    } elseif ($_GET['action'] === 'myTransactions') {
+        myTransactions();
     } elseif ($_GET['action'] === 'register') {
         register();
+    } elseif ($_GET['action'] === 'wallet') {
+        wallet();
+    } elseif ($_GET['action'] === 'sell') {
+        sell();
+    } elseif ($_GET['action'] === 'users') {
+        users();
+    } elseif ($_GET['action'] === 'payments') {
+        payments();
+    } elseif ($_GET['action'] === 'transactions') {
+        transactions();
     } else {
         echo 'Error 404 : Page not found.';
     }
