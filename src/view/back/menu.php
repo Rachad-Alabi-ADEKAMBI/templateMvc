@@ -1,5 +1,6 @@
 <div class="menu">
-    <?php if ($_SESSION['user']['role'] == 'user') { ?>
+    <?php
+    if ($_SESSION['user']['role'] == 'user') { ?>
     <ul>
         <li>
             <button class='btn btn-primary'>
@@ -56,7 +57,8 @@
 
 
     </ul>
-    <?php } else { ?>
+    <?php }
+    if ($_SESSION['user']['role'] == 'admin') { ?>
 
     <ul>
         <li>
@@ -115,5 +117,6 @@
 
     </ul>
 
-    <?php } ?>
+    <?php }
+    ?>
 </div>

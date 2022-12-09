@@ -1,5 +1,7 @@
 <?php
 
+//local
+
 function getConnexion()
 {
     return new PDO(
@@ -8,3 +10,15 @@ function getConnexion()
         ''
     );
 }
+
+//production
+/*
+function getConnexion()
+{
+    return new PDO(
+        'mysql:host=localhost; dbname=adra7128_rapidnote; charset=UTF8',
+        'adra7128_rapid',
+        'adra7128_rapid'
+    );
+}
+*/

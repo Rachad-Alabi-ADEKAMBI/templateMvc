@@ -1,25 +1,8 @@
 <?php
 session_start();
-//local
-$pdo = new PDO('mysql:dbname=rapidnote;host=localhost', 'root', '');
 
-function getConnexion()
-{
-    return new PDO(
-        'mysql:host=localhost; dbname=rapidnote; charset=UTF8',
-        'root',
-        ''
-    );
-}
+require_once '../src/model/model.php';
 
-//production
-/*
-function getConnexion(){
-    return new PDO("mysql:host=localhost; dbname=adra7128_frankobizness; charset=UTF8", "adra7128_adra7128", "g@RT@iOQ0Amn");
-}
-
-$pdo = new PDO('mysql:dbname=adra7128_sezam;host=localhost', 'adra7128_adra7128', 'g@RT@iOQ0Amn');
-*/
 $error = ['error' => false];
 $action = '';
 
@@ -69,125 +52,7 @@ function verifyInput($inputContent)
 */
 
 /*
-function newCar(){
-    $pdo = getConnexion();
-    if (!empty ($_POST)){
-        $errors = array ();
-            if (empty ($_POST['name'])) {
-                $errors['name'] = 'Nom non valide';
-            }
-
-            if (empty ($_POST['price'])) {
-                $errors['price'] = 'Veuillez definir le prix';
-            }
-
-            if (empty ($_POST['color'])) {
-                $errors['color'] = 'Veuillez définir la couleur';
-            }
-
-
-
-            if (empty ($_POST['brand_name'])) {
-                $errors['brand_name'] = "Veuillez définir la marque";
-            }
-
-            if (empty ($_POST['category'])) {
-                $errors['category'] = "Veuillez definir l'action";
-            }
-
-            if (empty ($_POST['year'])) {
-                $errors['year'] = "Veuillez definir l'année";
-            }
-
-            if (empty ($_POST['rate'])) {
-                $errors['year'] = "Veuillez definir l'état";
-            }
-
-            $_SESSION['car'] = [
-                "name" => verifyInput($_POST['name']),
-                ];
-
-
-            if(!empty($errors)){ ?>
-<ul>
-    <?php foreach ($errors as $error): ?>
-    <li style="color: red"><?= $error; ?></li>
-    <?php endforeach;?>
-</ul>
-<?php }
-
-
-            if(empty($errors)){
-                          $name = verifyInput($_POST['name']);
-                          $price = verifyInput($_POST['price']);
-                          $description = verifyInput($_POST['description']);
-                          $year = verifyInput($_POST['year']);
-                          $category = verifyInput($_POST['category']);
-                          $color = verifyInput($_POST['color']);
-                          $brand_name = verifyInput($_POST['brand_name']);
-                          $rate = verifyInput($_POST['rate']);
-                          $status = 'Disponible';
-
-                           //On insere dans la table cars
-                    $sql = $pdo->prepare('INSERT INTO cars SET  date_of_insertion = NOW(),
-                         name = ?, price = ?, description = ?, year = ?, category = ?, color = ?,
-                         brand_name = ?, status = ?, rate = ?');
-
-                    $sql->execute(array($name, $price, $description, $year, $category,
-                $color, $brand_name, $status, $rate ));
-
-                //on insere l'image
-                $car_id = $pdo->lastInsertId();
-                $pic1 = time() . '_' .$_FILES['pic1'] ['name'];
-                $pic2 = time() . '_' .$_FILES['pic2'] ['name'];
-                $pic3 = time() . '_' .$_FILES['pic3'] ['name'];
-                $pic4 = time() . '_' .$_FILES['pic4'] ['name'];
-
-
-                $target = '../public/img/' .$pic1;
-
-                if( move_uploaded_file($_FILES['pic1']['tmp_name'], $target)){
-
-                    $req = $pdo -> prepare ("UPDATE cars SET
-                    pic1 = ? WHERE id = ? ");
-
-                   $req -> execute([$pic1, $car_id]);
-                }
-
-                if( move_uploaded_file($_FILES['pic2']['tmp_name'], $target)){
-
-                    $req = $pdo -> prepare ("UPDATE cars SET
-                    pic2 = ? WHERE id = ? ");
-
-                   $req -> execute([$pic2, $car_id]);
-                }
-
-                if( move_uploaded_file($_FILES['pic3']['tmp_name'], $target)){
-
-                    $req = $pdo -> prepare ("UPDATE cars SET
-                    pic3 = ? WHERE id = ? ");
-
-                   $req -> execute([$pic3, $car_id]);
-                }
-
-                if( move_uploaded_file($_FILES['pic4']['tmp_name'], $target)){
-
-                    $req = $pdo -> prepare ("UPDATE cars SET
-                    pic4 = ? WHERE id = ? ");
-
-                   $req -> execute([$pic4, $car_id]);
-                }
-               ?>
-<script>
-alert('Nouveau vehicule ajouté avec succes');
-window.location.replace('./index.php?action=dashboard');
-</script>
-<?php
-    }
-    }
-}
-*/
-
+ */
 function getMyTransactions($user_id)
 {
     $pdo = getConnexion();
@@ -209,70 +74,6 @@ function getRates()
     $datas = $req->fetchAll();
     $req->closeCursor();
     sendJSON($datas);
-}
-
-function setAccount()
-{
-    $pdo = getConnexion();
-    if (!empty($_POST)) {
-        $errors = [];
-
-        //mise a jour du compte
-        if (empty($_POST['username'])) {
-            $errors['username'] = 'Please check the username';
-        } else {
-            $req = $pdo->prepare('SELECT id FROM users WHERE username = ?');
-            $req->execute([$_POST['username']]);
-            $user = $req->fetch();
-            if ($user) {
-                $errors['username'] = 'Username unavailable';
-            }
-        }
-
-        if (empty($_POST['password1'])) {
-            $errors['password1'] = 'Please check the password';
-        }
-
-        if ($_POST['password2'] != $_POST['password1']) {
-            $errors['password2'] = 'Please check the passwords';
-        }
-
-        if (!empty($errors)) { ?>
-errors: <br>
-<ul>
-    <?php foreach ($errors as $error): ?>
-    <li style="color: red"><?= $error ?></li>
-    <?php endforeach; ?>
-</ul>
-<?php }
-
-        if (empty($errors)) {
-
-            $user_id = $_SESSION['registration']['id'];
-            //mise à jour du compte adhérent
-
-            $req = $pdo->prepare("UPDATE users SET  username= ?,
-            pass = ?, account_status ='active'
-            WHERE id = ?");
-
-            $username = verifyInput($_POST['username']);
-            $password = password_hash($_POST['password1'], PASSWORD_BCRYPT);
-
-            $req->execute([$username, $password, $user_id]);
-
-            $_SESSION['user'] = [
-                'id' => $user_id,
-                'role' => $_SESSION['register']['role'],
-                'username' => $username,
-            ];
-            ?>
-
-<script>
-alert("Done, you will be redirected to your dashboard");
-window.location.replace("http://127.0.0.1:8080/dashboard");
-</script><?php
-        }
-    }
 }
 
 function getTransactions()
@@ -418,7 +219,7 @@ function register()
         $errors = [];
 
         if (empty($_POST['first_name'])) {
-            $errors['first_name'] = 'Please, check the first     name';
+            $errors['first_name'] = 'Please, check the first name';
         }
 
         if (empty($_POST['last_name'])) {
@@ -429,46 +230,99 @@ function register()
             empty($_POST['email']) ||
             !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)
         ) {
-            $errors['email'] = 'Please, check the email';
+            $errors['email'] = 'Please check the email';
+        } else {
+            $req = $pdo->prepare('SELECT id FROM users WHERE email = ?');
+            $req->execute([$_POST['email']]);
+            $user = $req->fetch();
+            if ($user) {
+                $errors['email'] = 'This email is already registred';
+            }
+        }
+
+        if (empty($_POST['username'])) {
+            $errors['username'] = 'Please check the username';
+        } else {
+            $req = $pdo->prepare('SELECT id FROM users WHERE username = ?');
+            $req->execute([$_POST['username']]);
+            $user = $req->fetch();
+            if ($user) {
+                $errors['username'] = 'Username not available';
+            }
+        }
+
+        if (empty($_POST['password1'])) {
+            $errors['password1'] = 'Please check the password';
+        }
+
+        if ($_POST['password2'] != $_POST['password1']) {
+            $errors['password2'] = 'Please check the passwords';
+        }
+
+        if (empty($_POST['phone_code'])) {
+            $errors['phone_code'] = 'Please, check the phone code';
         }
 
         if (empty($_POST['phone_number'])) {
             $errors['phone_number'] = 'Please, check the phone number';
         }
 
-        if (!empty($errors)) { ?>
+        if (!empty($errors)) {
+            include 'errors.php';
 
-<?php include 'errors.php'; ?>
-<?php }
+            $_SESSION['registration'] = [
+                'first_name' => verifyInput($_POST['first_name']),
+                'last_name' => verifyInput($_POST['last_name']),
+                'email' => verifyInput($_POST['email']),
+                'phone_code' => verifyInput($_POST['phone_code']),
+                'phone_number' => verifyInput($_POST['phone_number']),
+                'username' => verifyInput($_POST['username']),
+                'password1' => verifyInput($_POST['password1']),
+            ];
+
+            exit();
+        }
         if (empty($errors)) {
             $email = verifyInput($_POST['email']);
             $first_name = verifyInput($_POST['first_name']);
-            $last_name = $_POST['last_name'];
-            $phone_number = $_POST['phone_number'];
+            $last_name = verifyInput($_POST['last_name']);
+            $phone_code = verifyInput($_POST['phone_code']);
+            $phone_number = verifyInput($_POST['phone_number']);
+            $password = password_hash($_POST['password1'], PASSWORD_BCRYPT);
+            $username = verifyInput($_POST['username']);
             $token = str_random(20);
             $req = $pdo->prepare(
-                'INSERT INTO users SET
+                "INSERT INTO users SET
                         date_of_insertion = NOW(),
                          first_name = ?, last_name = ?,
-                        email = ?, phone_number = ?,
-                        account_status = "Pending", token = ?,
-                        role = "user" '
+                        email = ?, phone_code = ?, phone_number = ?,
+                        status = 'Active', token = ?,
+                        role = 'user', username = ?, pass = ?, balance = 0, verification = 'Not verified' "
             );
             $req->execute([
                 $first_name,
                 $last_name,
                 $email,
+                $phone_code,
                 $phone_number,
                 $token,
+                $username,
+                $password,
             ]);
-            $_SESSION['resgistration'] = [
+            $_SESSION['user'] = [
                 'id' => $pdo->lastInsertId(),
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'phone_code' => $phone_code,
+                'phone_number' => $phone_number,
+                'username' => $username,
+                'role' => 'user',
             ];
         }
         ?>
 <script>
-alert("Registration completed, please set up your account details");
-window.location.replace("http://127.0.0.1:8080/setAccount");
+alert("Registration completed, please verify your email for the email verification, welecome to Rapidnote");
+window.location.replace("../index.php?action=dashboard");
 </script>
 <?php
     }
@@ -589,8 +443,8 @@ function settings()
         }
         ?>
 <script>
-//   alert('Settings updated successfully');
-//   window.location.replace('http://127.0.0.1:8080/dashboard')
+alert('Settings updated successfully, they will be applied at your next login');
+window.location.replace('./index.php?action=dashboard')
 </script>
 <?php
     }
@@ -604,9 +458,7 @@ if ($action == 'editRate') {
 if ($action == 'register') {
     register();
 }
-if ($action == 'setAccount') {
-    setAccount();
-}
+
 if ($action == 'settings') {
     settings();
 }
@@ -648,16 +500,12 @@ window.location.replace('../index.php?action=login')
             if (empty($errors)) {
                 $_SESSION['user'] = [
                     'username' => $user['username'],
-                    'role' => $user['admin'],
+                    'role' => $user['role'],
                     'first_name' => $user['first_name'],
                     'last_name' => $user['last_name'],
                     'id' => $user['id'],
                 ];
-                if ($_SESSION['user']['role'] == 'user') {
-                    header('Location: ../index.php?action=dashboard');
-                } else {
-                    header('Location: ../index.php?action=dashboard');
-                }
+                header('Location: ../index.php?action=dashboard');
             }
         }
     }

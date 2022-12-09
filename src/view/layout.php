@@ -11,7 +11,7 @@
 
 
 <body>
-    <?php include 'header.php'; ?> <br> <br><br> <br>
+    <?php include 'header.php'; ?><br>
 
     <div class="app" id='app'>
         <?= $content ?>

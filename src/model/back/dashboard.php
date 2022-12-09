@@ -7,7 +7,7 @@ function getRates()
 
     $req = $pdo->query('SELECT *  FROM rates ORDER BY id ASC');
 
-    $posts = [];
+    $rates = [];
     while ($row = $req->fetch()) {
         $data = [
             'buying_price' => $row['buying_price'],

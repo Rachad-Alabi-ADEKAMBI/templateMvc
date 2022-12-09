@@ -4,6 +4,11 @@
 
 <div class="section">
     <div class="container">
+        <!--responsive menu-->
+        <div class="row mt-0 menu-mobile">
+            <?php include 'menu-mobile.php'; ?>
+        </div>
+
         <div class="row dashboard">
             <div class="col-sm-12 col-md-3 dashboard__menu">
                 <?php include 'menu.php'; ?>
@@ -20,14 +25,25 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" v-if='showInfos'>
                         <?php foreach ($infos as $data) { ?>
                         <div class="col-sm-12 col-md-4">
                             <div class="card">
                                 <img class="card-img-top" src="./public/img/bitcoin.jpg" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">Balance</h5>
-
+                                    <p class="card-title">Wallet</p>
+                                    <p class="card-text">
+                                        <strong>
+                                            Balance
+                                        </strong> <br>
+                                        <span><?= htmlspecialchars(
+                                            $data['balance']
+                                        ) ?> ghc</span> <img src="./public/img/ghana-flag.png" alt=""> !
+                                        <span><?= htmlspecialchars(
+                                            $data['balance'] / 10
+                                        ) ?>usd</span> <img src="./public/img/usd.png" alt="" class='flag'>
+                                        <hr>
+                                    </p>
 
                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
@@ -37,25 +53,49 @@
 
                         <?php foreach ($rates as $data) { ?>
                         <div class="col-sm-12 col-md-4">
-                            <div class="card">
+                            <div class="card p-0">
                                 <img class="card-img-top" src="./public/img/<?= htmlspecialchars(
                                     $data['image']
                                 ) ?>" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?= htmlspecialchars(
+                                    <p class="card-title"><?= htmlspecialchars(
                                         $data['name']
                                     ) ?> <br>
-                                    </h5>
+                                    </p>
                                     <p class="card-text">
-                                        Buying <br>
-                                        <?= htmlspecialchars(
+                                        <strong>
+                                            Buying
+                                        </strong> <br>
+                                        <span><?= htmlspecialchars(
                                             $data['buying_price']
-                                        ) ?> GHC! <?= htmlspecialchars(
-     $data['buying_price'] / 10
- ) ?> USD
+                                        ) ?> ghc</span> <img src="./public/img/ghana-flag.png" alt=""> !
+                                        <span><?= htmlspecialchars(
+                                            $data['buying_price'] / 10
+                                        ) ?>usd</span> <img src="./public/img/usd.png" alt="" class='flag'>
+                                        <hr>
                                     </p>
 
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text">
+                                        <strong>
+                                            Selling
+                                        </strong> <br>
+                                        <span><?= htmlspecialchars(
+                                            $data['selling_price']
+                                        ) ?> ghc</span> <img src="./public/img/ghana-flag.png" alt=""> !
+                                        <span><?= htmlspecialchars(
+                                            $data['selling_price'] / 10
+                                        ) ?>usd</span> <img src="./public/img/usd.png" alt="" class='flag'>
+                                        <hr>
+                                    </p>
+
+                                    <?php if (
+                                        $_SESSION['user']['role'] == 'admin'
+                                    ) { ?>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
+                                        <i class='fas fa-pen' @click='editRate(1)'></i>
+                                    </p>
+
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -63,6 +103,8 @@
 
 
                     </div>
+
+
                 </div>
             </div>
         </div>

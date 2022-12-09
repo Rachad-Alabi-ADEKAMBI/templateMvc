@@ -6,6 +6,7 @@ $bg: #F3F3F5;
 $white: white;
 $grey: rgb(34, 26, 26);
 $grey-light: #535353;
+$grey-dark: #484C55;
 $black: #202022;
 
 @keyframes greeen {
@@ -31,40 +32,17 @@ $black: #202022;
         }
 }
 
-@keyframes moveL {
-        0% {
-          transform:scaleX(-1);
-        // width: 120px;
-        }
 
-        100% {
-            transform:scaleX(1);
 
-        }
-}
-
-@keyframes moveR {
+@keyframes move {
             0% {
-              transform:scaleX(-1);
-            // width: 120px;
+              transform:scaleX(0);
             }
 
             100% {
                 transform:scaleX(1);
 
             }
-}
-
-@keyframes moveB {
-    0% {
-        transform:scaleX(-1);
-      // width: 120px;
-      }
-
-      100% {
-          transform:scaleX(1);
-
-      }
 }
 
 
@@ -140,13 +118,10 @@ html, body{
     font-family: 'Montserrat', sans-serif;
 }
 
+
+
 li{
     list-style: none;
-}
-
-.btn-primary{
-    margin: 5px;
-    width: auto;
 }
 
 a{
@@ -154,6 +129,38 @@ a{
 }
 
 a:hover{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-primary{
+    margin: 5px;
+    width: auto;
+
+    a{
+        color: $white;
+        font-weight: bold;
+    }
+}
+
+.btn-primary:hover{
+    a{
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: $blue;
+}
+
+h1, h2{
     color: $blue;
 }
 
@@ -176,6 +183,15 @@ span{
     color: $blue;
 }
 
+.blue{
+    color: $blue;
+}
+
+
+.menu-mobile{
+    display: none;
+}
+
 .form{
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -187,10 +203,46 @@ span{
         color: $blue;
     }
 
+    span{
+        cursor: pointer;
+    }
+
     img{
         width: 40px;
         height: 30px;
     }
+
+    .flag{
+        width: 25px;
+        height: 15px;
+    }
+
+    .label1{
+        position: relative;
+        .input{
+            width: 120px;
+            color: $blue
+        }
+
+        .currency-gh{
+            position: absolute;
+            top: 32px;
+            left: 125px;
+            width: 100%;
+            color: $blue;
+            font-weight: bold;
+        }
+
+        .currency-usd{
+            position: absolute;
+            top: 35px;
+            left: 220px;
+            font-weight: bold;
+            width: 100%;
+            color: $blue
+        }
+    }
+
 }
 
 
@@ -230,184 +282,50 @@ span{
     }
 
     &__content{
-
-    }
-}
-
-.top{
-    height: 350px;
-    margin: 70px auto 40px auto;
-    @include flex();
-    width: 100%;
-    text-align: center;
-    padding-top: 140px;
- /*   background-image:
-    linear-gradient(rgba(36, 35, 117, 0.794),
-     rgba(23, 19, 71, 0.589)),
-            url("");
-*/
-
-    &__text{
-        text-align: center;
-        width: 70%;
-        margin: auto;
-        opacity: 1;
-        animation: entrance 2s ease-in-out;
-
-        &__title{
-            color: $blue;
-            font-size: 2.2em;
-            font-weight: bold;
-            margin: 20px auto;
-
-        }
-
-        &__text{
-            font-size: 1em;
-            margin: 20px auto;
-
-        }
-
-        &__subtitle{
-            font-size: 1.2em;
-            margin: 20px auto;
-        }
-
-        &__items{
-            margin: 40px auto;
-            width: 80%;
-            li{
-                display: inline;
-                margin: 10px;
-                text-align: center;
-                font-weight: bold;
-            }
-        }
-    }
-}
-
-.about{
-    @include flex;
-    text-align: center;
-    height: 60vh;
-    margin: 90px auto;
-    width: 70%;
-
-    &__item{
-        flex: 1;
-        margin: auto;
-        @include flex(column);
-
-        &__title{
-            @include subtitle();
-        }
-
-        &__text{
-            text-align: justify;
-            width: 80%;
-            margin: auto;
-        }
-
-        .link{
-            margin: auto;
-        }
-
-        &__boxes{
-            @include flex();
-            width: 80%;
-            margin: auto;
-            height: 80%;
-
-            .box{
-                width: 150px;
-                height: 90px;
-                background-color: purple;
-                display: table;
-                margin: 10px;
-                color: $white;
-
-                p{
-                    display: table-cell;
-                    vertical-align: middle;
-                    font-size: 0.7em;
-                    font-weight: bold;
+       .container{
+            .card{
+                .card-img-top{
+                    width: 90px;
+                    height: 60px;
                 }
 
-            }
-
-            .purple{
-                background-color: purple;
-                border-color: purple;
-            }
-
-            .wheat{
-                background: wheat;
-                border-color: wheat;
-            }
-
-            .orange{
-                background-color: orange;
-                border-color: orange;
-            }
-
-            .green{
-                background-color: green;
-                border-color: green;
-            }
-        }
-/*
-        &__boxes{
-                @include flex();
-                .box{
-                    margin: 15px;
-                    height: 140px;
-                    width: 170px;
-                    border: 1px solid;
-                    cursor: pointer;
-                    display: table;
-                    i{
-                        color: white;
+                .card-body{
+                    .card-title{
+                        font-weight: bold;
                     }
 
-                    p{
-                        display: table-cell;
-                        vertical-align: middle;
+                    .card-text{
+                        width: 100%;
+                        strong{
+                            text-decoration: underline;
+                            font-size: 1em;
+                        }
+
+                        span{
+                            font-size: 0.8em;
+
+                        }
+
+                        img{
+                            width: 15px;
+                            height: 10px;
+                        }
+
+                        .currency{}
+
+                        i{
+                            cursor: pointer;
+                        }
+
+                        i:hover{
+                            color: $blue;
+                            font-weight: bold;
+                        }
                     }
                 }
-
-                .green{
-                    background-color: rgb(53, 233, 53);
-                    border: 1px green solid;
-                }
-
-                .orange{
-                    background: #f47032;
-                    border: 1px #f47032 solid;
-                }
-
-
-        }
-        */
-        .link{
-            @include link();
-            margin: 20px auto;
-
-            a{
-                color: $white;
             }
+       }
     }
-    }
-
-    .item-left{
-        animation: moveL 2s ease-in-out;
-    }
-
-    .item-right{
-      //  transform-origin: right;
-        animation: moveR 2s ease-in-out;
-    }
-
-
 }
 
 
@@ -440,51 +358,7 @@ span{
     }
 }
 
-.care{
-    @include flex();
-    width: 80%;
-    background-color: white;
-    margin: 10px auto;
 
-    .card{
-        flex: 1;
-        margin: auto;
-        @include flex;
-        border: none;
-
-        &__text{
-            width: 100%;
-            margin: auto;
-            &__title{
-                @include subtitle();
-            }
-
-            &__text{
-                width: 90%;
-                text-align: left;
-            }
-
-            .link{
-                width: 150px;
-                margin: auto;
-            }
-        }
-
-        img{
-            width: 300px;
-            height: 250px;
-            margin: auto;
-        }
-    }
-
-    .cardL{
-        animation: moveL 2s ease-in-out;
-    }
-
-    .cardR{
-        animation: moveR 2s ease-in-out;
-    }
-}
 
 .payments{
     @include flex(column);
@@ -515,102 +389,190 @@ span{
     }
 }
 
+.section{
+    .container{
+        .top{
+        }
 
-/*
-.contact{
-    display: block;
-    margin: 20px auto 0 auto;
-    height: 600px;
-    width: 100%;
-    background-color: rgb(55, 71, 82);
-    text-align: center;
+        .about{
+            margin-top: 10px;
 
-    &__title{
-        @include subtitle();
-    }
-
-    &__text{
-        text-align: justify;
-        width: 80%;
-        margin: auto;
-    }
-
-    form{
-        width: 60%;
-        margin: 20px auto;
-        display: block;
+            .boxes{
+               @include flex();
 
 
-        .contact__details{
-            width: 100%;
+               .box{
+                width: 230px;
+                height: 120px;
+                margin: 15px auto;
+                color: $white;
+                font-weight: bold;
+                padding-top: 20px;
+
+                .i{
+                    color: $white;
+                    font-weight: bold;
+                    font-size: 2em;
+                }
+
+               }
+
+               .green{
+                background-color: green;
+
+               }
+
+               .orange{
+                background-color: orange;
+               }
+
+               .purple{
+                background-color: purple;
+               }
+
+               .wheat{
+                background-color: rgb(143, 55, 55);
+               }
+            }
+        }
+
+        .how{
+            .how-card{
+                margin: auto;
+                display: block;
+                text-align: center;
+                .number{
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 80px;
+                    color: $white;
+                    background-color: $blue;
+                    display: table;
+                    font-weight: bold;
+                    margin: auto;
+
+                    p{
+                        display: table-cell;
+                        vertical-align: middle;
+                    }
+
+                }
+            }
+        }
+
+        .care{
             @include flex();
+            margin: 10px auto;
 
-            label{
-                width: 49%;
-                input{
+            .card{
+                flex: 1;
+                margin: auto;
+                @include flex;
+                border: none;
+                background-color: #F8F9FA;
+
+                &__text{
                     width: 100%;
+                    margin: auto;
+                    &__title{
+                        @include subtitle();
+                    }
+
+                    &__text{
+                        width: 90%;
+                        text-align: left;
+                    }
+
+                    .link{
+                        width: 150px;
+                        margin: auto;
+                    }
+                }
+
+                img{
+                    width: 300px;
+                    height: 250px;
+                    margin: auto;
                 }
             }
 
-        }
-
-        label{
-            width: 100%;
-
-            input{
-                width: 100%;
-                background-color: #ddd;
-                border-radius: 10px;
+            .card{
+                animation: move 1s ease-in-out;
             }
 
-            .message{
-                width: 100%;
-                border-radius: 10px;
-                height: 250px;
-                background-color: #ddd;
+        }
+
+        .payments{
+            @include flex();
+            height: auto;
+            text-align: center;
+           .payment-img{
+            flex: 1;
+            img{
+                width: 90px;
+                height: 80px;
+                border-radius: 40px;
+                margin: auto;;
             }
+           }
         }
 
-        button{
-            @include link;
-            transition: 500ms ease-in-out;
-        }
+        .contact{
+            ul{
+                li{
 
-        button:hover{
-            transform: scale(1.1);
+                    i{
+                        color: $blue;
+                        font-weight: bold;
+                    }
+                }
+            }
         }
     }
-
 }
 
 .footer{
-    @include flex();
-    background-color: rgba(56, 54, 54, 0.952);
-    padding-top: 20px;
-    margin: 0px auto 0 auto;
-    bottom: 0;
-
-    &__item{
-        flex: 1;
-
+     background-color: $grey-dark;
+     color: $white;
+     .container{
         ul{
             li{
-                display: block;
-
-                h4{
-                    font-weight: bold;
-                    color: $blue;
+                @include flex();
+                margin: 10px auto;
+                justify-content: flex-start;
+                a{
+                    color: $white;
+                    i{
+                        color: $white;
+                    }
                 }
 
-                a{
-                    margin: auto 0;
-                    color: $white;
+                .icon{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 20px;
+                    text-align: center;
+                    display: table;
+                    background-color: $white;
+                    margin-right: 10px;
+
+                    i{
+                        color: $grey-dark;
+                        display: table-cell;
+                        vertical-align: middle;
+                    }
+                }
+
+                p{
+                    display: table-cell;
+                    vertical-align: middle;
+                    margin: 8px auto auto 0;
                 }
             }
         }
-    }
+     }
 }
-*/
+
 .table{
 	width: 98%;
 	border-collapse: collapse;
@@ -673,11 +635,11 @@ span{
 /*responsive*/
 @media(min-width: 1024px) and(max-width: 1279px){
     .dashboard{
-        .menu{
+        &__menu{
             display: none;
         }
 
-        .content{
+        &__content{
             width: 100%;
         }
     }
@@ -686,11 +648,11 @@ span{
 
 @media(min-width: 768px) and(max-width: 1023px){
     .dashboard{
-        .menu{
+        &__menu{
             display: none;
         }
 
-        .content{
+        &__content{
             width: 100%;
 
             &__boxes{
@@ -770,6 +732,7 @@ span{
 
     .footer{
         flex-direction: column;
+
     }
 
 
@@ -777,11 +740,11 @@ span{
 
 @media(min-width: 480px) and(max-width: 767px){
     .dashboard{
-        .menu{
+        &__menu{
             display: none;
         }
 
-        .content{
+        &__content{
             width: 100%;
             margin: 50px auto;
 
@@ -807,96 +770,85 @@ span{
         }
     }
 
-.top{
-    height: auto;
-    margin-bottom: 5px;
+    .top{
+        height: auto;
+        margin-bottom: 5px;
 
-    &__text{
-        width: 90%;
-        &__title{
-            font-size: 2em;
-        }
-
-        &__text{
-
-        }
-    }
-}
-
-.about{
-    height: auto;
-    flex-direction: column-reverse;
-    width: 100%;
-    margin: 0 auto;
-
-    &__item{
         &__text{
             width: 90%;
-        }
+            &__title{
+                font-size: 2em;
+            }
 
-        &__boxes{
-            width: 70%;
-            .box{
-                width: 130px;
-                height: 80px;
-                margin: 10px;
+            &__text{
+
             }
         }
     }
-}
 
-.care{
-    flex-direction: column-reverse;
+    .about{
+        height: auto;
+        flex-direction: column-reverse;
+        width: 100%;
+        margin: 0 auto;
 
-    .card{
-
-        img{
-            width: 300px;
-            height: 200px;
-            margin: 10px auto 10px auto;
-        }
-    }
-}
-
-.payments{
-    height: auto;
-
-    &__items{
-        width: 70%;
         &__item{
-            img{
-                width: 90px;
-                height: 90px;
+            &__text{
+                width: 90%;
+            }
+
+            &__boxes{
+                width: 70%;
+                .box{
+                    width: 130px;
+                    height: 80px;
+                    margin: 10px;
+                }
             }
         }
     }
-}
 
-.form{
-    width: 400px;
+    .care{
+        flex-direction: column-reverse;
 
-    label{
-        width: 300px;
+        .card{
+
+            img{
+                width: 300px;
+                height: 200px;
+                margin: 10px auto 10px auto;
+            }
+        }
     }
 
-    .details{
-        width: 90%;
-    }
-}
+    .payments{
+        height: auto;
 
-.footer{
-    flex-direction: column;
-}
+        &__items{
+            width: 70%;
+            &__item{
+                img{
+                    width: 90px;
+                    height: 90px;
+                }
+            }
+        }
+    }
 }
 
 
 @media(min-width: 350px) and(max-width:479px){
+
+.menu-mobile{
+    display: block;
+    background-color: #1a5486;
+}
     .dashboard{
-        .menu{
+        &__menu{
             display: none;
         }
 
-        .content{
+        &__content{
             width: 100%;
             margin: 30px auto;
 
@@ -947,22 +899,6 @@ span{
             &__text{
 
             }
-        }
-    }
-
-    .form{
-        width: 320px;
-
-        h1{
-            font-size: 1.9em;
-        }
-
-        .details{
-            width: 95%;
-        }
-
-        label{
-            width: 300px;
         }
     }
 
@@ -1048,27 +984,5 @@ span{
                 }
             }
         }
-    }
-
-    .contact{
-        height: 500px;
-        h2{
-            font-size: 1.4em;
-        }
-
-        form{
-            width: 90%;
-
-            label{
-                .message{
-                    height: 150px;
-                }
-            }
-        }
-    }
-
-    .footer{
-        flex-direction: column;
-        height: 1000px;
     }
 }

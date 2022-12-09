@@ -1,7 +1,7 @@
-<footer class="footer  bg-light">
+<footer class="footer mt-5 pt-3">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-3">
+            <div class="col-sm-12 col-md-4">
                 <h4>
                     Rapid note
                 </h4>
@@ -11,67 +11,68 @@
 
                 <ul>
                     <li>
-                        phone
+                        <div class="icon"><i class="fas fa-phone-volume"></i></div>
+                        <p>+233 55 00 00 00</p>
                     </li>
                     <li>
-                        Contact
+                        <div class="icon"><i class="fab fa-whatsapp"></div></i>
+                        <p>+233 55 00 00 00</p>
+
                     </li>
                     <li>
-                        Location
+                        <div class="icon"><i class="fas fa-envelope"></i>
+                        </div>
+                        <p>contact@rapidnote.com</p>
                     </li>
                 </ul>
             </div>
 
-            <div class="col-sm-12 col-md-3">
+            <div class="col-sm-12 col-md-4">
                 <h4>
-                    About
+                    Entreprise
                 </h4>
 
                 <ul>
                     <li>
-                        About
+                        <a href="./index.php#about">
+                            <i class="fas fa-arrow-right"></i> About
+                        </a>
                     </li>
                     <li>
-                        Privacy Policy
+                        <a href="./index.php#contact">
+                            <i class="fas fa-arrow-right"></i> Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./index.php?action=cgu">
+                            <i class="fas fa-arrow-right"></i> Terms of use
+                        </a>
                     </li>
                 </ul>
             </div>
 
-            <div class="col-sm-12 col-md-3">
+            <div class="col-sm-12 col-md-4">
                 <h4>
                     Links
                 </h4>
 
                 <ul>
                     <li>
-                        Login/Register
+                        <a href="./index.php?action=buy">
+                            <i class="fas fa-arrow-right"></i> Buy
+                        </a>
                     </li>
                     <li>
-                        Demo
+                        <a href="./index.php?action=sell">
+                            <i class="fas fa-arrow-right"></i> Sell
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./index.php?action=wallet">
+                            <i class="fas fa-arrow-right"></i> Wallet
+                        </a>
                     </li>
                 </ul>
-            </div>
-
-            <div class="col-sm-12 col-md-3">
-                <h4>
-                    Newsletters
-                </h4>
-                <form action="" class="form-inline">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <label for=""></label>
-                            <input type="email">
-                        </div>
-
-                        <div class="col-3">
-                            <button>
-                                Subscribe
-                            </button>
-                        </div>
-                    </div>
-                </form>
-
-
             </div>
         </div>
     </div>
