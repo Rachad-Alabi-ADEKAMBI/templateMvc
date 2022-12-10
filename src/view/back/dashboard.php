@@ -91,9 +91,11 @@
                                     <?php if (
                                         $_SESSION['user']['role'] == 'admin'
                                     ) { ?>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
-                                        <i class='fas fa-pen' @click='editRate(1)'></i>
-                                    </p>
+                                    <a href="./index.php?action=editRate&id=<?= urlencode(
+                                        $data['id']
+                                    ) ?>" class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
+                                        <i class='fas fa-pen'></i>
+                                    </a>
 
                                     <?php } ?>
                                 </div>

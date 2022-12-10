@@ -1,5 +1,5 @@
 <?php
-include './src/model/model.php';
+include_once './src/model/model.php';
 
 function getRates()
 {
@@ -14,6 +14,7 @@ function getRates()
             'name' => $row['name'],
             'selling_price' => $row['selling_price'],
             'image' => $row['image'],
+            'id' => $row['id'],
         ];
 
         $rates[] = $data;

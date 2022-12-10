@@ -7,10 +7,12 @@ createApp({
         rates: [],
         details: [],
         infos: [],
-        id: 1,
+        id: 2,
         rate: 1,
         rat: 0,
         amount: 0,
+        new_id: '',
+        items: [],
         need: 0,
         pay: '',
         amountToPay: 0,
@@ -19,6 +21,7 @@ createApp({
         showPayment: false,
         showBuy: true,
         showSell: true,
+        showItems: true,
         load: 0,
         withdraw: 0,
         showLoad: false,
@@ -34,7 +37,11 @@ methods: {
        axios.get('http://127.0.0.1/rn/api/rates').then(response =>
             this.rates = response.data);
             this.showInfos = true;
-    },
+    axios.get('http://127.0.0.1/rn/api/rates').then(response =>
+            this.infos = response.data);
+            this.showInfos = true;
+        },
+
     getBuyingRate(id){
         axios.get('http://127.0.0.1/rn/api/buyingRate/' +id).then(response =>
         this.rate = response.data);
@@ -43,11 +50,13 @@ methods: {
         axios.get('http://127.0.0.1/rn/api/sellingRate/' +id).then(response =>
         this.rate = response.data);
     },
-    editRate(id){
-        axios.get('https://127.0.0.1/rn/api/rateById/1').then(response =>
+    editRate(new_id){
+        this.id = new_id;
+       window.location.replace('./index.php?action=editRate&id=' +id)
+        axios.get('https://127.0.0.1/rn/api/rateById/2').then(response =>
         this.infos = response.data);
-        window.location.replace('http://127.0.0.1/rn/index.php?action=editRate&id=' +id)
     },
+
     getPay(need, rate){
         this.pay = rate * need;
         },

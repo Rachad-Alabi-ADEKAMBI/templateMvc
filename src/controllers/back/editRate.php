@@ -1,9 +1,9 @@
 <?php
-//require_once './src/model/back/transactions.php';
+require_once './src/model/back/editRate.php';
 
-function editRate()
+function editRate($id)
 {
-    // $datas = getTransactions();
+    $datas = getInfos($id);
 
     require './src/view/back/editRate.php';
 }
