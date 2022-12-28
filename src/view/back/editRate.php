@@ -17,6 +17,11 @@
 
             <div class="col-sm-12 col-md-6">
                 <form class="form" action='./index.php?action=createRate' method='POST'>
+                    <div class="form__close">
+                        <a href="./index.php?action=dashboard">
+                            back
+                        </a>
+                    </div>
                     <h1>
                         Edit rate
                     </h1>

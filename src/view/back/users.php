@@ -4,6 +4,10 @@
 
 <div class="section">
     <div class="container">
+        <!--responsive menu-->
+        <div class="row mt-0 menu-mobile">
+            <?php include 'menu-mobile.php'; ?>
+        </div>
         <div class="row dashboard">
             <div class="col-sm-12 col-md-3 dashboard__menu">
                 <?php include 'menu.php'; ?>
@@ -50,7 +54,7 @@
                                                 <td>
                                                     <?= htmlspecialchars(
                                                         $data['balance']
-                                                    ) ?>
+                                                    ) ?> ghc
                                                 </td>
                                             </tr>
                                             <?php } ?>
